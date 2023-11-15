@@ -10,11 +10,13 @@ export class AppController {
   @Get()
   async getHello(): Promise<string> {
     dotenv.config();
+
     const connection = await mysql2.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
+      port: Number(process.env.DB_PORT),
     });
 
     const result = await connection.execute(
@@ -23,7 +25,6 @@ export class AppController {
 
     connection.end();
 
-    console.log(result);
     return this.appService.getHello(result);
   }
 }

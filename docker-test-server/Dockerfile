@@ -19,10 +19,10 @@ COPY . .
 EXPOSE 4000
 
 # Define environment variables
-ENV DB_HOST=host.docker.internal
+ENV DB_HOST=mysql
 ENV DB_USER=root
 ENV DB_PASSWORD=secret
-ENV DB_PORT=3307
+ENV DB_PORT=3306
 ENV DB_DATABASE=docker_test_db
 
 # Command to run the application
